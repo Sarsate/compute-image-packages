@@ -6,7 +6,7 @@ MAJOR = 2
 MINOR = 0
 
 NSS_LIBRARY_NAME = libnss_$(NAME).so.$(MAJOR).$(MINOR)
-NSS_LIBRARY_SONAME = libnss_$(NAME).so.$(MAJOR)
+NSS_LIBRARY_SONAME = libnss_$(BASENAME).so.$(MAJOR)
 NSS_INSTALL_PATH = /lib
 PAM_INSTALL_PATH = /lib/security
 AUTHKEYS_INSTALL_PATH = /usr/bin
@@ -51,7 +51,7 @@ SSHD_HELPER = $(BIN_DIR)/google_oslogin_sshd
 SUDOERS_HELPER = $(BIN_DIR)/google_oslogin_sudoers
 BIN_INSTALL_PATH = /usr/local/bin
 
-LIBS = -lcurl -ljson
+LIBS = -lcurl -ljson-c
 PAM_LIBS = -lpam $(LIBS)
 
 all: $(NSS) $(PAM) $(AUTHKEYS_BIN)
