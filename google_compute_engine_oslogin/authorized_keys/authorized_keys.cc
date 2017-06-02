@@ -40,7 +40,9 @@ int main(int argc, char* argv[]) {
   url << kMetadataServerUrl << "users?username=" << UrlEncode(argv[1]);
   string user_response = HttpGet(url.str());
   if (user_response.empty()) {
-    return 1;
+    // If we fail to recognize a user in oslogin, return 0 so we don't throw
+    // errors and pollute auth.log for non-oslogin users.
+    return 0;
   }
   string email = ParseJsonToEmail(user_response);
   if (email == "") {
