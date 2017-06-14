@@ -65,7 +65,7 @@ int _nss_oslogin_getpwuid_r(uid_t uid, struct passwd *result, char *buffer,
     return NSS_STATUS_NOTFOUND;
   }
   if (!ParseJsonToPasswd(response, result, &buffer_manager, errnop)) {
-    if(*errnop == EINVAL) {
+    if (*errnop == EINVAL) {
       openlog("nss_oslogin", LOG_PID, LOG_USER);
       syslog(LOG_ERR, "Received malformed response from server: %s",
              response.c_str());
