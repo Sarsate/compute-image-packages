@@ -164,6 +164,7 @@ TEST(NssCacheTest, TestLoadJsonFinalResponse) {
 
   // Verify that there are no more users stored.
   ASSERT_FALSE(nss_cache.HasNextPasswd());
+  ASSERT_TRUE(nss_cache.OnLastPage());
   ASSERT_FALSE(nss_cache.GetNextPasswd(&buf, &result, &test_errno));
   EXPECT_EQ(test_errno, ENOENT);
 }

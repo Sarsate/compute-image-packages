@@ -26,6 +26,7 @@ namespace oslogin_utils {
 static const char kMetadataServerUrl[] =
    "http://metadata.google.internal/computeMetadata/v1/oslogin/";
 
+
 // BufferManager encapsulates and manages a buffer and length. This class is not
 // thread safe.
 class BufferManager {
@@ -138,6 +139,9 @@ OnCurlWrite(void* buf, size_t size, size_t nmemb, void* userp);
 // request was successful. If successful, the result from the server will be
 // stored in response, and the HTTP response code will be stored in http_code.
 bool HttpGet(const string& url, string* response, long* http_code);
+
+// Returns whether user_name is a valid OsLogin user name.
+bool ValidateUserName(const string& user_name);
 
 // URL encodes the given parameter. Returns the encoded parameter.
 std::string UrlEncode(const string& param);
